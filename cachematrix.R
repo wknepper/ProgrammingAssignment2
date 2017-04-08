@@ -1,15 +1,36 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This is the coursera r programming assignment number 2
 
-## Write a short comment describing this function
+## The following function caches the inverse of a function following the example
+## of getting the mean from a vector
 
 makeCacheMatrix <- function(x = matrix()) {
 
+  inver <- NULL
+  set <- function(y) {
+    x <<- y
+    inv <<- NULL
+  }
+  get <- function() x
+  setinv <- function(inverse) inver <<- inverse
+  getinv <- function() inv
+  list(set = set, get = get,
+       setinv = setinv,
+       getinv = getinv)
 }
 
 
-## Write a short comment describing this function
+## Returns a matrix that is the inverse of 'x'
+## following example of getting a mean from the vector
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+       
+  inver <- x$getinv()
+  if(!is.null(inver)) {
+    message("getting cached data")
+    return(inver)
+  }
+  output <- x$get()
+  inver <- mean(output, ...)
+  x$setinv(m)
+  inver
 }

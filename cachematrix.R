@@ -4,7 +4,7 @@
 ## of getting the mean from a vector
 
 makeCacheMatrix <- function(x = matrix()) {
-
+  
   inver <- NULL
   set <- function(y) {
     x <<- y
@@ -23,14 +23,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## following example of getting a mean from the vector
 
 cacheSolve <- function(x, ...) {
-       
+  
   inver <- x$getinv()
   if(!is.null(inver)) {
     message("getting cached data")
     return(inver)
   }
   output <- x$get()
-  inver <- mean(output, ...)
-  x$setinv(m)
+  inver <- solve(output, ...)
+  x$setinv(inver)
   inver
 }
